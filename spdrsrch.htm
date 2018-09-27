@@ -1,0 +1,105 @@
+<HTML>
+
+<HEAD>
+<TITLE>SPDR SRCH</TITLE>
+</HEAD>
+
+<BODY TEXT=BLACK LINK=BLUE VLINK=RED VLINKSTYLE=U><h1>SUBMIT</h1>
+<hr><br>
+<CENTER>
+<SCRIPT LANGUAGE="JavaScript">
+   function validateForm() {
+      if ( document.submission.findtext.value == "" ) {
+         alert( "Enter something to search for." );
+         document.submission.findtext.focus();
+         return false;
+      }
+      if ( document.submission.prereq.value == "include" || document.submission.prereq.value == "exclude") {
+         if( document.submission.prereqtext.value.length < 3){
+            alert( "Enter a prerequisite." );
+            document.submission.prereqtext.focus();
+            return false;
+         }
+      }
+   }
+</SCRIPT>
+<FORM NAME="submission" ACTION="spdr.plx" METHOD=POST
+onSubmit="return validateForm()">
+target: <!--<INPUT TYPE="TEXT" NAME="findtext" SIZE="50">-->
+<textarea name="findtext" cols="80" rows="5"></textarea><br><br>
+replace: <!--<input type="text" name="replacetext" size="50">-->
+<textarea name="replacetext" cols="80" rows="5"></textarea><br>
+directories: <textarea name="directories" cols="80" rows="2"></textarea><br>
+prerequisite: <textarea name="prereqtext" cols="80" rows="3"></textarea><br>
+<!-- status / user / leave count: <INPUT TYPE=TEXT NAME="status" SIZE=4><br> -->
+<table>
+<tr><td>
+	Search root:<br>
+	<label>
+		<input type="radio" name="root" value="web" checked="checked">Public root</input>
+	</label><br>
+	<label>
+		<input type="radio" name="root" value="server">File system root</input>
+	</label><br>
+</td><td>
+	Action:<br>
+	<label>
+		<input type="radio" name="action" value="find" checked="checked">Find</input>
+	</label><br>
+	<label>
+		<input type="radio" name="action" value="revert">Revert</input>
+	</label><br>
+	<label>
+		<input type="radio" name="action" value="custom">Replace</input>
+	</label><br>
+</td><td>
+	Prereq:<br>
+	<label>
+		<input type="radio" name="prereq" value="none" checked="checked">No Prerequisite</input>
+	</label><br>
+	<label>
+		<input type="radio" name="prereq" value="include">Require</input>
+	</label><br>
+	<label>
+		<input type="radio" name="prereq" value="exclude">Exclude</input>
+	</label><br>
+</td><td>
+	Seek:<br>
+	<label>
+		<input type="radio" name="seek" value="strict" checked="checked">Strict</input>
+	</label><br>
+	<label>
+		<input type="radio" name="seek" value="spider">Narrow</input>
+	</label><br>
+	<label>
+		<input type="radio" name="seek" value="spider">Spider</input>
+	</label><br>
+</td><td>
+	<INPUT TYPE="submit" VALUE="Submit"><br>
+	<input type="reset" value="Reset">
+</td><td>
+	Type:<br>
+	<label>
+		<input type="radio" name="format" value="htm" checked="checked">HTML</input>
+	</label><br>
+	<label>
+		<input type="radio" name="format" value="pl">Perl</input>
+	</label><br>
+	<label>
+		<input type="radio" name="format" value=".">All</input>
+	</label><br>
+</td><td><br>
+	<label>
+		<input type="radio" name="format" value="txt">Text</input>
+	</label><br>
+	<label>
+		<input type="radio" name="format" value="php">PHP</input>
+	</label><br>
+	<label>
+		<input type="radio" name="format" value="prev">Back</input>
+	</label>
+</td></tr></table>
+</FORM>
+<br><br>
+</BODY>
+</HTML>
